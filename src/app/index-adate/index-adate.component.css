@@ -2,8 +2,8 @@
   display: grid;
   width: 100vw;
   height: 200px;
-  border: 2px solid black;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .flex-container {
@@ -19,8 +19,9 @@
     display: grid;
     width: 100vw;
     height: 400px;
-    border: 2px solid black;
-    justify-content: center;
+    justify-items: center;
+    box-sizing: border-box;
+  
 
 }
 

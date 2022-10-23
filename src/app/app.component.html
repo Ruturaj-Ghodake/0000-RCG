@@ -1,29 +1,74 @@
 <div class="container">
   <div class="s-header">
     <div class="s-container">
-      <div class="logo"><img src="/src/assets/img/small.jfif" alt="img fo"></div>
-      <div class="nav" style="margin-right: 80px;"> 
-          <ul id="menu">
-            <li><button pButton pRipple type="button" label="HOME" class="p-button-text" ></button></li>
-            <li><button pButton pRipple type="button" label="About Us" class="p-button-text"></button></li>
-            <li><button pButton pRipple type="button" label="Contact Us" class="p-button-text" ></button></li>
-            <li><button pButton pRipple type="button" label="Login" class="p-button-text" ></button></li>
-          </ul>  
+      <div class="logo"><img src="../assets/img/heart.png" alt="img fo" /></div>
+      <div class="nav" style="margin-right: 80px">
+        <ul id="menu">
+          <li>
+            <button
+              pButton
+              pRipple
+              type="button"
+              label="HOME"
+              class="p-button-text"
+              (click)="home()"
+            ></button>
+          </li>
+          <li>
+            <button
+              pButton
+              pRipple
+              type="button"
+              label="About Us"
+              class="p-button-text"
+              (click)="about()"
+            ></button>
+          </li>
+          <li>
+            <button
+              pButton
+              pRipple
+              type="button"
+              label="Contact Us"
+              class="p-button-text"
+              (click)="contact()"
+            ></button>
+          </li>
+          <li>
+            <button
+              pButton
+              pRipple
+              type="button"
+              label="Login"
+              class="p-button-text"
+              (click)="login()"
+            ></button>
+          </li>
+          <li>
+            <button
+              pButton
+              pRipple
+              type="button"
+              label="Register"
+              class="p-button-text"
+              (click)="register()"
+            ></button>
+          </li>
+        </ul>
       </div>
-      
     </div>
   </div>
 </div>
 
-<app-index-adate></app-index-adate>
-
-
-
+<router-outlet></router-outlet>
 
 <div class="footer">
-  DOCTOR NEST <br>
-  The Best for you. <br>
-  
+  DOCTOR NEST <br />
+  The Best for you. <br />
+  <div>
+    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+    <i class="fa fa-instagram" aria-hidden="true"></i>
+    <i class="fa fa-twitter" aria-hidden="true"></i>
+    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+  </div>
 </div>
-
-

@@ -1,0 +1,35 @@
+.container{
+    display: grid;
+
+    grid-template-columns: 50px 1fr 1fr 50px ;
+    grid-template-rows: 500px ;
+    gap:20px;
+
+}
+
+.inner-container{
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+   min-width: 100px;
+   min-height: 100px;
+
+    border: 1px solid black;
+    padding: 10px;
+}
+
+p{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.right-container{
+    grid-column-start: 3;
+    grid-column-end: 4;
+
+   min-width: 100px;
+   min-height: 100px;
+
+    border: 1px solid black;
+    padding: 10px;
+}

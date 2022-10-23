@@ -7,18 +7,32 @@ import {ButtonModule} from 'primeng/button';
 import {CalendarModule} from 'primeng/calendar';
 import { IndexADateComponent } from './index-adate/index-adate.component';
 import {BrowserAnimationsModule}  from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import {PasswordModule} from 'primeng/password';
+import {InputTextModule} from 'primeng/inputtext';
+import { DividerModule } from "primeng/divider";
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexADateComponent,
+    LoginComponent,
+    RegisterComponent,
+    AboutUsComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
     CalendarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PasswordModule,
+    InputTextModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

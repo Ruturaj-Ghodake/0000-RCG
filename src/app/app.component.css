@@ -10,7 +10,6 @@
   display: grid;
   grid-template-rows: 70px;
   box-sizing: border-box;
-  border: 1px solid red;
   align-items: center;
 }
 
@@ -20,6 +19,8 @@
 .s-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 #menu li {
@@ -43,7 +44,7 @@
   width: 100vw;
   height: 1fr;
   min-height:100px;
-  border: 2px solid black;
   justify-content: center;
+  box-sizing: border-box;
 }
 
