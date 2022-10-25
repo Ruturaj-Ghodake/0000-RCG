@@ -1,12 +1,13 @@
-.container {
+.main-container {
   display: grid;
   width: 100vw;
   height: 200px;
   align-items: center;
   box-sizing: border-box;
+ background-color:#cee0dcff;
 }
 
-.flex-container {
+.flex-main-container {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -15,12 +16,13 @@
 
 
 
-.second-container{
+.second-main-container{
     display: grid;
     width: 100vw;
     height: 400px;
     justify-items: center;
     box-sizing: border-box;
+    background-color:#cee0dcff;
   
 
 }
