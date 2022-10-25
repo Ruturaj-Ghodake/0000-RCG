@@ -1,4 +1,4 @@
-.container{
+.main-container{
     display: grid;
     width: 100vw;
     grid-template-columns: 170px 1fr  1fr 170px;
@@ -6,7 +6,7 @@
     gap: 20px;
 }
 
-.left-container{
+.left-main-container{
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column-start: 2;
@@ -22,7 +22,7 @@
     width: 300px;
 }
 
-.right-container{
+.right-main-container{
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column-start: 3;
