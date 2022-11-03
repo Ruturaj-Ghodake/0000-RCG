@@ -1,33 +1,23 @@
 <div class="main">
   <div class="reg">
-    <form action="">
+    <form #registerForm="ngForm">
+
+      {{ registerForm.value | json }}
+      <br>
+      {{ hospitalUser| json }}
       <!-- Radio buttons -->
       <table>
         <tr>
           <td>
             <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="inlineRadioOptions"
-                id="inlineRadio1"
-                value="option1"
-              />
-              <label class="form-check-label" for="inlineRadio1"
-                >Doctor Signup</label
-              >
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                value="Doctor Signup" (click)="doctorFormSelection('Doctor Signup')" ngModel/>
+              <label class="form-check-label" for="inlineRadio1">Doctor Signup</label>
             </div>
             <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="inlineRadioOptions"
-                id="inlineRadio2"
-                value="option2"
-              />
-              <label class="form-check-label" for="inlineRadio2"
-                >Hospital Signup</label
-              >
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                value="Hospital Signup" (click)="hospitalFormSelection('Hospital Signup')" ngModel/>
+              <label class="form-check-label" for="inlineRadio2">Hospital Signup</label>
             </div>
           </td>
         </tr>
@@ -39,38 +29,26 @@
         <tr>
           <td>
             <div class="form-group">
-              <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"
-                >Preference</label
-              >Title:
-              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+             <label>Title: </label>
+              <select class="custom-select mr-sm-2" id="inlineSalutation" name="Title" ngModel>
                 <option selected>Choose...</option>
-                <option value="1">Mr.</option>
-                <option value="2">Mrs.</option>
-                <option value="3">Ms.</option>
-                <option value="4">Miss.</option>
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Ms">Ms</option>
+                <option value="Miss"></option>
               </select>
             </div>
           </td>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputEmail4">First Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputFName"
-                placeholder="Ex: Ruturaj"
-              />
+              <label for="inputFirstName">First Name</label>
+              <input type="text" class="form-control" id="inputFName" placeholder="Ex: Ruturaj" name="firstName" ngModel />
             </div>
           </td>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputPassword4">Last Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputLName"
-                placeholder="Ex: Ghodake"
-              />
+              <label for="inputLast Name">Last Name</label>
+              <input type="text" class="form-control" id="inputLName" placeholder="Ex: Ghodake"  name="lastName" ngModel/>
             </div>
           </td>
         </tr>
@@ -78,35 +56,20 @@
         <tr>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputPassword4">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                id="inputPassword4"
-                placeholder="Ex : john@gmail.com"
-              />
+              <label for="inputEmail">Email</label>
+              <input type="email" class="form-control" id="inputEmail" placeholder="Ex : john@gmail.com" name="email" ngModel />
             </div>
           </td>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputPassword4">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="inputPassword4"
-                placeholder="Password"
-              />
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" id="inputPassword" placeholder="Ex : Play@6655" name="password"  ngModel/>
             </div>
           </td>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputPassword4">Confirm Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="inputPassword4"
-                placeholder="Password"
-              />
+              <label for="inputCPassword">Confirm Password</label>
+              <input type="password" class="form-control" id="inputCPassword" placeholder="Ex : Play@6655" name="cPassword" ngModel />
             </div>
           </td>
         </tr>
@@ -114,36 +77,25 @@
         <tr>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputPassword4">Mobile Number</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputMNumber"
-                placeholder="Ex : 9876543210"
-              />
+              <label for="inputMobile">Mobile Number</label>
+              <input type="text" class="form-control" id="inputMobile" placeholder="Ex : 9876543210" name="mobile" ngModel/>
             </div>
           </td>
           <td>
             <div class="form-group">
-              <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"
-                >Preference</label
-              >
-              Gender:
-              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+              <label for="inlineFormCustomSelect">Gender: </label>
+              <select class="custom-select mr-sm-2" id="inlineIdGender" name="gender" ngModel>
                 <option selected>Choose...</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Other</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
               </select>
             </div>
           </td>
           <td>
             <div class="form-group">
-              <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"
-                >Preference</label
-              >
               Select Hospital Name:
-              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+              <select class="custom-select mr-sm-2" id="inlineGender" name="hospitalName" ngModel>
                 <option selected>Choose...</option>
                 <option value="1">Male</option>
                 <option value="2">Female</option>
@@ -156,52 +108,67 @@
         <tr>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputEmail4">Address Lane 1</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputFName"
-                placeholder="Ex: 123 Street House"
-              />
+              <label for="inputAddress1">Address Lane 1</label>
+              <input type="text" class="form-control" id="inputAddress1" placeholder="Ex: 123 Street House" name="address1" ngModel/>
             </div>
           </td>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputEmail4">Address Lane 2</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputFName"
-                placeholder="Ex: Sambhaji Nagar"
-              />
+              <label for="inputAddress2">Address Lane 2</label>
+              <input type="text" class="form-control" id="inputAddress2" placeholder="Ex: Sambhaji Nagar" name="address2" ngModel/>
             </div>
           </td>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputEmail4">Address Lane 3</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputFName"
-                placeholder="Ex: Savarkar road, Pune"
-              />
+              <label for="inputAddress3">Address Lane 3</label>
+              <input type="text" class="form-control" id="inputAddress3" placeholder="Ex: Savarkar road, Pune" name="address3"  ngModel/>
             </div>
           </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-group">
+              <label  for="inlineState">State</label>
+              <select class="custom-select mr-sm-2" id="inlineState" name="state"  ngModel>
+                <option selected>Choose...</option>
+                <option value="1" selected>Maharashtra</option>
+              </select>
+            </div>  
+          </td>
+          <td>
+            <div class="form-group">
+              <label for="inlineDistrict">District: </label>
+              <select class="custom-select mr-sm-2" id="inlineDistrict"  name="district"  ngModel>
+                <option selected>Choose...</option>
+                <option value="1" selected>Pune</option>
+              </select>
+            </div>
+          </td>
+
+          <td>
+            <div class="form-group">
+              <label for="inlineCity">City: </label>
+              <select class="custom-select mr-sm-2" id="inlineCity">
+                <option selected>Choose...</option>
+                <option value="1" selected>Hinjewadi</option>
+              </select>
+            </div>
+          </td>
+
         </tr>
       </table>
 
       <br />
       <!-- Doctor Info -->
+      <ng-template [ngIf]="doctorForm">
       <table>
         <tr>
           <td>
             <div class="form-group">
-              <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"
-                >Preference</label
-              >Specialist in :
-              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+              <label for="inlineSpecialist">Specialist in :</label>
+              <select class="custom-select mr-sm-2" id="inlineSpecialist"  name="specialist"  ngModel>
                 <option selected>Choose...</option>
-                <option value="1">Mr.</option>
+                <option value="1">Gastro</option>
                 <option value="2">Mrs.</option>
                 <option value="3">Ms.</option>
                 <option value="4">Miss.</option>
@@ -210,21 +177,14 @@
           </td>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputEmail4">Registration No</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputFName"
-                placeholder="Ex: 12345"
-              />
+              <label for="inputRegNo">Registration No</label>
+              <input type="text" class="form-control" id="inputRegNo" placeholder="Ex: 12345" name="registeredNo" ngModel/>
             </div>
           </td>
           <td>
             <div class="form-group">
-              <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect"
-                >Preference</label
-              >State Medical Council
-              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+              <label for="inlineStateCouncil">State Medical Council: </label>
+              <select class="custom-select mr-sm-2" id="inlineStateCouncil" name="statecouncil" ngModel >
                 <option selected>Choose...</option>
                 <option value="1">Mr.</option>
                 <option value="2">Mrs.</option>
@@ -235,74 +195,53 @@
           </td>
         </tr>
       </table>
-
       <br />
+      </ng-template>
+
+      
       <!-- Hospital Info -->
+      <ng-template [ngIf]="hospitalForm">
       <table>
         <tr>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputEmail4">Hospital Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputFName"
-                placeholder="Ex: Ruturaj"
-              />
+              <label for="inputHName">Hospital Name</label>
+              <input type="text" class="form-control" id="inputHName" placeholder="Ex: ACK Hospital"  name="newHospitalName" ngModel/>
             </div>
           </td>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputEmail4">Hospital Address</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputFName"
-                placeholder="Ex: Ruturaj"
-              />
+              <label for="inputHAddress">Hospital Address</label>
+              <input type="text" class="form-control" id="inputHAddress" placeholder="Ex: ACK road Pune"  name="newHospitalAddress" ngModel/>
             </div>
           </td>
         </tr>
         <tr>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputEmail4">Hospital Email</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputFName"
-                placeholder="Ex: Ruturaj"
-              />
+              <label for="inputHEmail">Hospital Email</label>
+              <input type="email" class="form-control" id="inputHEmail" placeholder="Ex: ack@gmail.com" name="newHospitalEmailId" ngModel/>
             </div>
           </td>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputEmail4">Hospital Mobile/ Phone No </label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputFName"
-                placeholder="Ex: Ruturaj"
-              />
+              <label for="inputHMob">Hospital Mobile/ Phone No </label>
+              <input type="text" class="form-control" id="inputHMob" placeholder="Ex: 9876543322" name="newHospitalMobile" ngModel/>
             </div>
           </td>
         </tr>
         <tr>
           <td>
             <div class="form-group col-md-10">
-              <label for="inputEmail4">Hospital Registration No. </label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputFName"
-                placeholder="Ex: Ruturaj"
-              />
+              <label for="inputHRegNo">Hospital Registration No. </label>
+              <input type="text" class="form-control" id="inputHRegNo" placeholder="Ex: Ruturaj" name="newHospitalRegNo" ngModel/>
             </div>
           </td>
         </tr>
       </table>
-
       <br />
+    </ng-template>
+     
       <!-- Capcha and Submit -->
       <table>
         <tr>
@@ -313,7 +252,7 @@
           </td>
         </tr>
         <tr>
-          <td><input type="button" value="Submit" /></td>
+          <td><input type="button" value="Submit"  (click)="allValues(registerForm)"/></td>
         </tr>
       </table>
     </form>
