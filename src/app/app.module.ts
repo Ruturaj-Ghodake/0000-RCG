@@ -14,6 +14,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import { DividerModule } from "primeng/divider";
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     BrowserAnimationsModule,
     PasswordModule,
     InputTextModule,
-    DividerModule
+    DividerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
