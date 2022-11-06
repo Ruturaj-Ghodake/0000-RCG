@@ -1,23 +1,39 @@
 <div class="main">
   <div class="reg">
-    <form #registerForm="ngForm">
-
-      {{ registerForm.value | json }}
-      <br>
-      {{ hospitalUser| json }}
+    <form [formGroup]="registrationForm">
+      {{ registrationForm.value | json }}
+      <br />
+      {{ hospitalUser | json }}
       <!-- Radio buttons -->
       <table>
         <tr>
           <td>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                value="Doctor Signup" (click)="doctorFormSelection('Doctor Signup')" ngModel/>
-              <label class="form-check-label" for="inlineRadio1">Doctor Signup</label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="Doctor Signup"
+                (click)="doctorFormSelection('Doctor Signup')"
+              />
+              <label class="form-check-label" for="inlineRadio1"
+                >Doctor Signup</label
+              >
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                value="Hospital Signup" (click)="hospitalFormSelection('Hospital Signup')" ngModel/>
-              <label class="form-check-label" for="inlineRadio2">Hospital Signup</label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio2"
+                value="Hospital Signup"
+                (click)="hospitalFormSelection('Hospital Signup')"
+                disabled
+              />
+              <label class="form-check-label" for="inlineRadio2"
+                >Hospital Signup</label
+              >
             </div>
           </td>
         </tr>
@@ -29,27 +45,64 @@
         <tr>
           <td>
             <div class="form-group">
-             <label>Title: </label>
-              <select class="custom-select mr-sm-2" id="inlineSalutation" name="Title" ngModel>
+              <label>Title: </label>
+              <select
+                class="custom-select mr-sm-2"
+                id="inlineSalutation"
+                formControlName="title"
+                name="Title"
+              >
                 <option selected>Choose...</option>
                 <option value="Mr">Mr</option>
                 <option value="Mrs">Mrs</option>
                 <option value="Ms">Ms</option>
-                <option value="Miss"></option>
+                <option value="Miss">Miss</option>
               </select>
             </div>
           </td>
           <td>
             <div class="form-group col-md-10">
               <label for="inputFirstName">First Name</label>
-              <input type="text" class="form-control" id="inputFName" placeholder="Ex: Ruturaj" name="firstName" ngModel />
+              <input
+                type="text"
+                class="form-control"
+                id="inputFName"
+                placeholder="Ex: Ruturaj"
+                name="firstName"
+                formControlName="fName"
+                [class.is-invalid]="
+                  f.get('fName').touched && f.get('fName').invalid
+                "
+              />
             </div>
+            <div
+              *ngIf="
+                f.get('fName').touched && f.get('fName').invalid;
+                then fNameError
+              "
+            ></div>
           </td>
           <td>
             <div class="form-group col-md-10">
               <label for="inputLast Name">Last Name</label>
-              <input type="text" class="form-control" id="inputLName" placeholder="Ex: Ghodake"  name="lastName" ngModel/>
+              <input
+                type="text"
+                class="form-control"
+                id="inputLName"
+                placeholder="Ex: Ghodake"
+                name="lastName"
+                formControlName="lName"
+                [class.is-invalid]="
+                  f.get('lName').touched && f.get('lName').invalid
+                "
+              />
             </div>
+            <div
+              *ngIf="
+                f.get('lName').touched && f.get('lName').invalid;
+                then lNameError
+              "
+            ></div>
           </td>
         </tr>
 
@@ -57,19 +110,58 @@
           <td>
             <div class="form-group col-md-10">
               <label for="inputEmail">Email</label>
-              <input type="email" class="form-control" id="inputEmail" placeholder="Ex : john@gmail.com" name="email" ngModel />
+              <input
+                type="email"
+                class="form-control"
+                id="inputEmail"
+                placeholder="Ex : john@gmail.com"
+                name="email"
+                formControlName="email"
+                [class.is-invalid]="
+                  f.get('email').touched && f.get('email').invalid
+                "
+              />
             </div>
+            <div
+              *ngIf="
+                f.get('email').touched && f.get('email').invalid;
+                then emailError
+              "
+            ></div>
           </td>
           <td>
             <div class="form-group col-md-10">
               <label for="inputPassword">Password</label>
-              <input type="password" class="form-control" id="inputPassword" placeholder="Ex : Play@6655" name="password"  ngModel/>
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword"
+                placeholder="Ex : Play@6655"
+                name="password"
+                formControlName="password"
+                [class.is-invalid]="
+                  f.get('email').touched && f.get('email').invalid
+                "
+              />
             </div>
+            <div
+              *ngIf="
+                f.get('password').touched && f.get('password').invalid;
+                then passwordError
+              "
+            ></div>
           </td>
           <td>
             <div class="form-group col-md-10">
               <label for="inputCPassword">Confirm Password</label>
-              <input type="password" class="form-control" id="inputCPassword" placeholder="Ex : Play@6655" name="cPassword" ngModel />
+              <input
+                type="password"
+                class="form-control"
+                id="inputCPassword"
+                placeholder="Ex : Play@6655"
+                name="cPassword"
+                formControlName="cPassword"
+              />
             </div>
           </td>
         </tr>
@@ -78,30 +170,76 @@
           <td>
             <div class="form-group col-md-10">
               <label for="inputMobile">Mobile Number</label>
-              <input type="text" class="form-control" id="inputMobile" placeholder="Ex : 9876543210" name="mobile" ngModel/>
+              <input
+                type="text"
+                class="form-control"
+                id="inputMobile"
+                placeholder="Ex : 9876543210"
+                name="mobile"
+                formControlName="mobileNo"
+                [class.is-invalid]="
+                  f.get('mobileNo').touched && f.get('mobileNo').invalid
+                "
+              />
             </div>
+            <div
+              *ngIf="
+                f.get('mobileNo').touched && f.get('mobileNo').invalid;
+                then mobileError
+              "
+            ></div>
           </td>
           <td>
             <div class="form-group">
               <label for="inlineFormCustomSelect">Gender: </label>
-              <select class="custom-select mr-sm-2" id="inlineIdGender" name="gender" ngModel>
+              <select
+                class="custom-select mr-sm-2"
+                id="inlineIdGender"
+                name="gender"
+                formControlName="gender"
+                [class.is-invalid]="
+                  f.get('gender').touched && f.get('gender').invalid
+                "
+              >
                 <option selected>Choose...</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
+                <option value="OTHER">OTHER</option>
               </select>
             </div>
+            <div
+              *ngIf="
+                f.get('gender').touched && f.get('gender').invalid;
+                then genderError
+              "
+            ></div>
           </td>
           <td>
             <div class="form-group">
               Select Hospital Name:
-              <select class="custom-select mr-sm-2" id="inlineGender" name="hospitalName" ngModel>
+              <select
+                class="custom-select mr-sm-2"
+                id="inlineGender"
+                name="hospitalName"
+                formControlName="selectedHName"
+                [class.is-invalid]="
+                  f.get('selectedHName').touched &&
+                  f.get('selectedHName').invalid
+                "
+              >
                 <option selected>Choose...</option>
                 <option value="1">Male</option>
                 <option value="2">Female</option>
                 <option value="3">Other</option>
               </select>
             </div>
+            <div
+              *ngIf="
+                f.get('selectedHName').touched &&
+                  f.get('selectedHName').invalid;
+                then selectedHNameError
+              "
+            ></div>
           </td>
         </tr>
 
@@ -109,139 +247,264 @@
           <td>
             <div class="form-group col-md-10">
               <label for="inputAddress1">Address Lane 1</label>
-              <input type="text" class="form-control" id="inputAddress1" placeholder="Ex: 123 Street House" name="address1" ngModel/>
+              <input
+                type="text"
+                class="form-control"
+                id="inputAddress1"
+                placeholder="Ex: 123 Street House"
+                name="address1"
+                formControlName="address1"
+                [class.is-invalid]="
+                  f.get('address1').touched && f.get('address1').invalid
+                "
+              />
             </div>
+            <div
+              *ngIf="
+                f.get('address1').touched && f.get('address1').invalid;
+                then address1Error
+              "
+            ></div>
           </td>
           <td>
             <div class="form-group col-md-10">
               <label for="inputAddress2">Address Lane 2</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="Ex: Sambhaji Nagar" name="address2" ngModel/>
+              <input
+                type="text"
+                class="form-control"
+                id="inputAddress2"
+                placeholder="Ex: Sambhaji Nagar"
+                name="address2"
+                formControlName="address2"
+                [class.is-invalid]="
+                  f.get('address2').touched && f.get('address2').invalid
+                "
+              />
             </div>
+            <div
+              *ngIf="
+                f.get('address2').touched && f.get('address2').invalid;
+                then address2Error
+              "
+            ></div>
           </td>
           <td>
             <div class="form-group col-md-10">
               <label for="inputAddress3">Address Lane 3</label>
-              <input type="text" class="form-control" id="inputAddress3" placeholder="Ex: Savarkar road, Pune" name="address3"  ngModel/>
+              <input
+                type="text"
+                class="form-control"
+                id="inputAddress3"
+                placeholder="Ex: Savarkar road, Pune"
+                name="address3"
+                formControlName="address3"
+              />
             </div>
           </td>
         </tr>
         <tr>
           <td>
             <div class="form-group">
-              <label  for="inlineState">State</label>
-              <select class="custom-select mr-sm-2" id="inlineState" name="state"  ngModel>
+              <label for="inlineState">State</label>
+              <select
+                class="custom-select mr-sm-2"
+                id="inlineState"
+                name="state"
+                formControlName="state"
+                [class.is-invalid]="
+                  f.get('state').touched && f.get('state').invalid
+                "
+              >
                 <option selected>Choose...</option>
                 <option value="1" selected>Maharashtra</option>
               </select>
-            </div>  
+            </div>
+            <div
+              *ngIf="
+                f.get('state').touched && f.get('state').invalid;
+                then stateError
+              "
+            ></div>
           </td>
           <td>
             <div class="form-group">
               <label for="inlineDistrict">District: </label>
-              <select class="custom-select mr-sm-2" id="inlineDistrict"  name="district"  ngModel>
+              <select
+                class="custom-select mr-sm-2"
+                id="inlineDistrict"
+                name="district"
+                formControlName="district"
+                [class.is-invalid]="
+                  f.get('district').touched && f.get('district').invalid
+                "
+              >
                 <option selected>Choose...</option>
                 <option value="1" selected>Pune</option>
               </select>
+              <div
+                *ngIf="
+                  f.get('district').touched && f.get('district').invalid;
+                  then districtError
+                "
+              ></div>
             </div>
           </td>
 
           <td>
             <div class="form-group">
               <label for="inlineCity">City: </label>
-              <select class="custom-select mr-sm-2" id="inlineCity">
+              <select
+                class="custom-select mr-sm-2"
+                id="inlineCity"
+                formControlName="city"
+                [class.is-invalid]="
+                  f.get('city').touched && f.get('city').invalid
+                "
+              >
                 <option selected>Choose...</option>
                 <option value="1" selected>Hinjewadi</option>
               </select>
             </div>
+            <div
+              *ngIf="
+                f.get('district').touched && f.get('district').invalid;
+                then districtError
+              "
+            ></div>
           </td>
-
         </tr>
       </table>
 
       <br />
       <!-- Doctor Info -->
       <ng-template [ngIf]="doctorForm">
-      <table>
-        <tr>
-          <td>
-            <div class="form-group">
-              <label for="inlineSpecialist">Specialist in :</label>
-              <select class="custom-select mr-sm-2" id="inlineSpecialist"  name="specialist"  ngModel>
-                <option selected>Choose...</option>
-                <option value="1">Gastro</option>
-                <option value="2">Mrs.</option>
-                <option value="3">Ms.</option>
-                <option value="4">Miss.</option>
-              </select>
-            </div>
-          </td>
-          <td>
-            <div class="form-group col-md-10">
-              <label for="inputRegNo">Registration No</label>
-              <input type="text" class="form-control" id="inputRegNo" placeholder="Ex: 12345" name="registeredNo" ngModel/>
-            </div>
-          </td>
-          <td>
-            <div class="form-group">
-              <label for="inlineStateCouncil">State Medical Council: </label>
-              <select class="custom-select mr-sm-2" id="inlineStateCouncil" name="statecouncil" ngModel >
-                <option selected>Choose...</option>
-                <option value="1">Mr.</option>
-                <option value="2">Mrs.</option>
-                <option value="3">Ms.</option>
-                <option value="4">Miss.</option>
-              </select>
-            </div>
-          </td>
-        </tr>
-      </table>
-      <br />
+        <table>
+          <tr>
+            <td>
+              <div class="form-group">
+                <label for="inlineSpecialist">Specialist in :</label>
+                <select
+                  class="custom-select mr-sm-2"
+                  id="inlineSpecialist"
+                  name="specialist"
+                  formControlName="specialist"
+                >
+                  <option selected>Choose...</option>
+                  <option value="1">Gastro</option>
+                  <option value="2">Mrs.</option>
+                  <option value="3">Ms.</option>
+                  <option value="4">Miss.</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div class="form-group col-md-10">
+                <label for="inputRegNo">Registration No</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputRegNo"
+                  placeholder="Ex: 12345"
+                  name="registeredNo"
+                  formControlName="doctorRegNo"
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <label for="inlineStateCouncil">State Medical Council: </label>
+                <select
+                  class="custom-select mr-sm-2"
+                  id="inlineStateCouncil"
+                  name="statecouncil"
+                  formControlName="stateCouncil"
+                >
+                  <option selected>Choose...</option>
+                  <option value="1">Mr.</option>
+                  <option value="2">Mrs.</option>
+                  <option value="3">Ms.</option>
+                  <option value="4">Miss.</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <br />
       </ng-template>
 
-      
       <!-- Hospital Info -->
       <ng-template [ngIf]="hospitalForm">
-      <table>
-        <tr>
-          <td>
-            <div class="form-group col-md-10">
-              <label for="inputHName">Hospital Name</label>
-              <input type="text" class="form-control" id="inputHName" placeholder="Ex: ACK Hospital"  name="newHospitalName" ngModel/>
-            </div>
-          </td>
-          <td>
-            <div class="form-group col-md-10">
-              <label for="inputHAddress">Hospital Address</label>
-              <input type="text" class="form-control" id="inputHAddress" placeholder="Ex: ACK road Pune"  name="newHospitalAddress" ngModel/>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="form-group col-md-10">
-              <label for="inputHEmail">Hospital Email</label>
-              <input type="email" class="form-control" id="inputHEmail" placeholder="Ex: ack@gmail.com" name="newHospitalEmailId" ngModel/>
-            </div>
-          </td>
-          <td>
-            <div class="form-group col-md-10">
-              <label for="inputHMob">Hospital Mobile/ Phone No </label>
-              <input type="text" class="form-control" id="inputHMob" placeholder="Ex: 9876543322" name="newHospitalMobile" ngModel/>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="form-group col-md-10">
-              <label for="inputHRegNo">Hospital Registration No. </label>
-              <input type="text" class="form-control" id="inputHRegNo" placeholder="Ex: Ruturaj" name="newHospitalRegNo" ngModel/>
-            </div>
-          </td>
-        </tr>
-      </table>
-      <br />
-    </ng-template>
-     
+        <table>
+          <tr>
+            <td>
+              <div class="form-group col-md-10">
+                <label for="inputHName">Hospital Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputHName"
+                  placeholder="Ex: ACK Hospital"
+                  name="newHospitalName"
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-group col-md-10">
+                <label for="inputHAddress">Hospital Address</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputHAddress"
+                  placeholder="Ex: ACK road Pune"
+                  name="newHospitalAddress"
+                />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group col-md-10">
+                <label for="inputHEmail">Hospital Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="inputHEmail"
+                  placeholder="Ex: ack@gmail.com"
+                  name="newHospitalEmailId"
+                />
+              </div>
+            </td>
+            <td>
+              <div class="form-group col-md-10">
+                <label for="inputHMob">Hospital Mobile/ Phone No </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputHMob"
+                  placeholder="Ex: 9876543322"
+                  name="newHospitalMobile"
+                />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-group col-md-10">
+                <label for="inputHRegNo">Hospital Registration No. </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputHRegNo"
+                  placeholder="Ex: Ruturaj"
+                  name="newHospitalRegNo"
+                />
+              </div>
+            </td>
+          </tr>
+        </table>
+        <br />
+      </ng-template>
+
       <!-- Capcha and Submit -->
       <table>
         <tr>
@@ -252,9 +515,102 @@
           </td>
         </tr>
         <tr>
-          <td><input type="button" value="Submit"  (click)="allValues(registerForm)"/></td>
+          <td>
+            <input
+              type="button"
+              value="Submit"
+              (click)="allValues(registrationForm)"
+            />
+          </td>
         </tr>
       </table>
     </form>
   </div>
 </div>
+
+<ng-template #fNameError>
+  <small *ngIf="f.get('fName').errors['minlength']" class="text-danger">
+    minimum 2 characters required
+  </small>
+  <small *ngIf="f.get('fName').errors['required']" class="text-danger">
+    This field is required
+  </small>
+</ng-template>
+
+<ng-template #lNameError>
+  <small *ngIf="f.get('lName').errors['minlength']" class="text-danger">
+    minimum 2 characters required
+  </small>
+  <small *ngIf="f.get('lName').errors['required']" class="text-danger">
+    This field is required
+  </small>
+</ng-template>
+
+<ng-template #emailError>
+  <small *ngIf="f.get('email').errors['pattern']" class="text-danger">
+    Enter email properly.
+  </small>
+  <small *ngIf="f.get('email').errors['required']" class="text-danger">
+    This field is required.
+  </small>
+</ng-template>
+
+<ng-template #passwordError>
+  <small *ngIf="f.get('password').errors['pattern']" class="text-danger">
+    Pattern not matching</small
+  >
+  <small *ngIf="f.get('password').errors['required']" class="text-danger">
+    This field is required</small
+  >
+</ng-template>
+
+<ng-template #mobileError>
+  <small *ngIf="f.get('mobileNo').errors['pattern']" class="text-danger">
+    Pattern not matching</small
+  >
+  <small *ngIf="f.get('mobileNo').errors['required']" class="text-danger">
+    This field is required</small
+  >
+</ng-template>
+
+<ng-template #genderError>
+  <small *ngIf="f.get('gender').errors['required']" class="text-danger">
+    This field is required</small
+  >
+</ng-template>
+
+<ng-template #selectedHNameError>
+  <small *ngIf="f.get('selectedHName').errors['required']" class="text-danger">
+    This field is required</small
+  >
+</ng-template>
+
+<ng-template #address1Error>
+  <small *ngIf="f.get('address1').errors['required']" class="text-danger">
+    This field is required</small
+  >
+</ng-template>
+
+<ng-template #address2Error>
+  <small *ngIf="f.get('address2').errors['required']" class="text-danger">
+    This field is required</small
+  >
+</ng-template>
+
+<ng-template #stateError>
+  <small *ngIf="f.get('state').errors['required']" class="text-danger">
+    This field is required</small
+  >
+</ng-template>
+
+<ng-template #districtError>
+  <small *ngIf="f.get('district').errors['required']" class="text-danger">
+    This field is required</small
+  >
+</ng-template>
+
+<ng-template #cityError>
+  <small *ngIf="f.get('city').errors['required']" class="text-danger">
+    This field is required</small
+  >
+</ng-template>
