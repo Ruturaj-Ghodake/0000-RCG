@@ -13,7 +13,9 @@
   align-items: center;
 }
 
-.s-header {
+#logofinish{
+  width: 65%;
+  height:10%;
 }
 
 .s-main-container {

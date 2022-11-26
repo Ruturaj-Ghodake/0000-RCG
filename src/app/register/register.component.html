@@ -51,14 +51,22 @@
                 id="inlineSalutation"
                 formControlName="title"
                 name="Title"
+                [class.is-invalid]="
+                  f.get('title').touched && f.get('title').invalid
+                "
               >
-                <option selected>Choose...</option>
                 <option value="Mr">Mr</option>
                 <option value="Mrs">Mrs</option>
                 <option value="Ms">Ms</option>
                 <option value="Miss">Miss</option>
               </select>
             </div>
+            <div
+              *ngIf="
+                f.get('title').touched && f.get('title').invalid;
+                then titleError
+              "
+            ></div>
           </td>
           <td>
             <div class="form-group col-md-10">
@@ -140,7 +148,7 @@
                 name="password"
                 formControlName="password"
                 [class.is-invalid]="
-                  f.get('email').touched && f.get('email').invalid
+                  f.get('password').touched && f.get('password').invalid
                 "
               />
             </div>
@@ -163,6 +171,7 @@
                 formControlName="cPassword"
               />
             </div>
+            <div *ngIf="f.get('cPassword').touched; then cPasswordError"></div>
           </td>
         </tr>
 
@@ -201,7 +210,6 @@
                   f.get('gender').touched && f.get('gender').invalid
                 "
               >
-                <option selected>Choose...</option>
                 <option value="MALE">MALE</option>
                 <option value="FEMALE">FEMALE</option>
                 <option value="OTHER">OTHER</option>
@@ -227,7 +235,6 @@
                   f.get('selectedHName').invalid
                 "
               >
-                <option selected>Choose...</option>
                 <option value="1">Male</option>
                 <option value="2">Female</option>
                 <option value="3">Other</option>
@@ -305,7 +312,7 @@
         <tr>
           <td>
             <div class="form-group">
-              <label for="inlineState">State</label>
+              <label for="inlineState">State:</label>
               <select
                 class="custom-select mr-sm-2"
                 id="inlineState"
@@ -315,7 +322,6 @@
                   f.get('state').touched && f.get('state').invalid
                 "
               >
-                <option selected>Choose...</option>
                 <option value="1" selected>Maharashtra</option>
               </select>
             </div>
@@ -338,7 +344,6 @@
                   f.get('district').touched && f.get('district').invalid
                 "
               >
-                <option selected>Choose...</option>
                 <option value="1" selected>Pune</option>
               </select>
               <div
@@ -361,14 +366,13 @@
                   f.get('city').touched && f.get('city').invalid
                 "
               >
-                <option selected>Choose...</option>
                 <option value="1" selected>Hinjewadi</option>
               </select>
             </div>
             <div
               *ngIf="
-                f.get('district').touched && f.get('district').invalid;
-                then districtError
+                f.get('city').touched && f.get('city').invalid;
+                then cityError
               "
             ></div>
           </td>
@@ -389,7 +393,6 @@
                   name="specialist"
                   formControlName="specialist"
                 >
-                  <option selected>Choose...</option>
                   <option value="1">Gastro</option>
                   <option value="2">Mrs.</option>
                   <option value="3">Ms.</option>
@@ -419,7 +422,6 @@
                   name="statecouncil"
                   formControlName="stateCouncil"
                 >
-                  <option selected>Choose...</option>
                   <option value="1">Mr.</option>
                   <option value="2">Mrs.</option>
                   <option value="3">Ms.</option>
@@ -605,12 +607,27 @@
 
 <ng-template #districtError>
   <small *ngIf="f.get('district').errors['required']" class="text-danger">
-    This field is required</small
+    <br>This field is required</small
   >
 </ng-template>
 
 <ng-template #cityError>
   <small *ngIf="f.get('city').errors['required']" class="text-danger">
     This field is required</small
+  >
+</ng-template>
+
+<ng-template #titleError>
+  <small *ngIf="f.get('title').errors['required']" class="text-danger">
+    This field is required</small
+  >
+</ng-template>
+
+<ng-template #cPasswordError>
+  <small
+    *ngIf="f.get('cPassword').errors['mustMatch']"
+    class="text-danger"
+  >
+    Password not matched</small
   >
 </ng-template>
