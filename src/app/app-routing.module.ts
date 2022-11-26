@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { IndexADateComponent } from './index-adate/index-adate.component';
 import { LoginComponent } from './login/login.component';
+import { PListComponent } from './p-list/p-list.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path:'contact', component:ContactUsComponent
+  },
+  {
+    path:'docHome', component:PListComponent
   }
 ];
 
