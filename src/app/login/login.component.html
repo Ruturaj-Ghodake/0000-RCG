@@ -1,72 +1,54 @@
 <div class="main-container">
-  <div class="left-main-container">
-    <div class="left-flex">
-      <div>Doctor Login</div>
-      <br />
-
-      <div>
-        <div><label for="email">Username: </label></div>
-        <input type="email" id="email" name="email" /><br />
-        <!-- <small>Enter username</small> --><br />
-      </div>
-
-      <div>
-        <div><label for="pwd">Password: </label></div>
-        <input type="password" id="pwd" name="pwd" minlength="8" /><br />
-        <small><a href="">Forget password ?</a></small> <br />
-        <!-- <small>Enter password</small><br> -->
-        <br />
-      </div>
-
-      <div>
-        <div>
-          <button
-            pButton
-            pRipple
-            type="button"
-            label="LOGIN"
-            class="p-button-success"
-          ></button>
-        </div>
-      </div>
-      <div>
-        <small>Don't have an account ? <a href="">Sign up</a></small>
-      </div>
+  <form (ngSubmit)="docLogin()">
+    <div><h1>LOGIN</h1></div>
+    <div class="field">
+      <b><label for="username" class="block">Username</label></b>
+      <br /><input
+        id="username"
+        type="username"
+        aria-describedby="username1-help"
+        pInputText
+        [(ngModel)]="docLoginValues.username"
+        name="username"
+      />
+      <!-- <br /><small id="username-help" class="p-error block"
+        >Enter username.</small
+      > -->
     </div>
-  </div>
 
-  <div class="right-main-container">
-    <div class="right-flex">
-      <div>Hospital Login</div>
-      <br />
+    <div class="field">
+      <b><label for="password" class="block">Password</label></b>
+      <br /><input
+        id="password"
+        type="username"
+        aria-describedby="password-help"
+        pInputText
+        [(ngModel)]="docLoginValues.password"
+        name="password"
+      />
+      
+      <br>
+      <!-- <small id="password-help" class="p-error block"
+        >Enter password.</small
+      > -->
+    </div>
 
-      <div>
-        <div><label for="email">Username: </label></div>
-        <input type="email" id="email" name="email" /><br />
-        <!-- <small>Enter username</small> --><br />
-      </div>
-
-      <div>
-        <div><label for="pwd">Password: </label></div>
-        <input type="password" id="pwd" name="pwd" minlength="8" /><br />
-        <small><a href="">Forget password ?</a></small> <br />
-        <!-- <small>Enter password</small><br> -->
-        <br />
-      </div>
-
+    <br>
+    <div>
       <div>
         <button
           pButton
           pRipple
-          type="button"
+          type="submit"
           label="LOGIN"
           class="p-button-success"
-        >
-        </button>
-      </div>
-      <div>
-        <small>Don't have an account ? <a href="">Sign up</a></small>
+        ></button>
       </div>
     </div>
+  </form>
+  <div>
+    <small>Don't have an account ? <a [routerLink]="['/register']">Sign up</a></small>
   </div>
+
+  {{docLoginValues | json }}
 </div>

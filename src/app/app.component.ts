@@ -1,33 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DoctorServiceService } from './services/doctor-service.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'doctor-nest';
 
-  constructor(private router:Router){}
+  isLogin=false;
 
-  login(){
-    this.router.navigate(['./login']);
+  constructor(private router:Router , private docService:DoctorServiceService){}
+
+  ngOnInit(): void {
+    this.isLogin= this.docService.isLoggedIn();
   }
 
-  home(){
-    this.router.navigate(['./']);
+  logoutUser(){
+    debugger;
+    this.docService.logout();
+    location.reload();
   }
 
-  register(){
-    this.router.navigate(['./register']);
-  }
 
-  about(){
-    this.router.navigate(['./about']);
-  }
-
-  contact(){
-    this.router.navigate(['./contact']);
-  }
 }

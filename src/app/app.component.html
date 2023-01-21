@@ -1,57 +1,67 @@
 <div class="main-container">
   <div class="s-header">
     <div class="s-main-container">
-      <div class="logo"><img src="../assets/img/colorLogoResize_final.png" id="logofinish" alt="img fo" /></div>
+      <div class="logo"><a href=""><img src="../assets/img/colorLogoResize_final.png" id="logofinish" alt="img fo" /></a></div>
       <div class="nav" style="margin-right: 80px">
         <ul id="menu">
-          <li>
+          <li *ngIf="!isLogin">
             <button
               pButton
               pRipple
               type="button"
               label="HOME"
               class="p-button-text"
-              (click)="home()"
+              routerLink="/"
             ></button>
           </li>
-          <li>
+          <li *ngIf="!isLogin">
             <button
               pButton
               pRipple
               type="button"
               label="About Us"
               class="p-button-text"
-              (click)="about()"
+              routerLink="/about"
             ></button>
           </li>
-          <li>
+          <li *ngIf="!isLogin">
             <button
               pButton
               pRipple
               type="button"
               label="Contact Us"
               class="p-button-text"
-              (click)="contact()"
+              routerLink="/contact"
             ></button>
           </li>
-          <li>
+          <li *ngIf="!isLogin">
             <button
               pButton
               pRipple
               type="button"
               label="Login"
               class="p-button-text"
-              (click)="login()"
+              routerLink="/login"
             ></button>
           </li>
-          <li>
+          <li *ngIf="!isLogin">
             <button
               pButton
               pRipple
               type="button"
               label="Register"
               class="p-button-text"
-              (click)="register()"
+              routerLink="/register"
+            ></button>
+          </li>
+          <li *ngIf="isLogin">
+            <button
+              pButton
+              pRipple
+              type="button"
+              label="Logout"
+              class="p-button-text"
+              (click)="logoutUser()"
             ></button>
           </li>
         </ul>
